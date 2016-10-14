@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<!--
+  ~ Copyright 2003-2016 Monitise Group Limited. All Rights Reserved.
+  ~
+  ~ Save to the extent permitted by law, you may not use, copy, modify,
+  ~ distribute or create derivative works of this material or any part
+  ~ of it without the prior written consent of Monitise Group Limited.
+  ~ Any reproduction of this material must contain this notice.
+  -->
+
+<!DOCTYPE suppressions PUBLIC
+        "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+        "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+
+<suppressions>
+    <!--sample usage-->
+    <!--<suppress files="core/src/main/java/com/monitise/mea/common/core/interceptors/BaseGeneralInterceptor.java" checks="IllegalCatchCheck" />-->
+    <suppress
+            files="src[\\/]main[\\/]java[\\/]com[\\/]monitise[\\/]resourcemanagement[\\/]domain[\\/]model[\\/]" checks="MagicNumber"/>
+    <suppress
+            files="src[\\/]main[\\/]java[\\/]com[\\/]monitise[\\/]resourcemanagement[\\/]util[\\/]SpringPagingHelper.java" checks="CyclomaticComplexity"/>
+    <suppress
+            files="src[\\/]main[\\/]java[\\/]com[\\/]monitise[\\/]resourcemanagement[\\/]util[\\/]SpringPagingHelper.java" checks="ReturnCount"/>
+    <suppress 
+            files="src[\\/]main[\\/]java[\\/]com[\\/]monitise[\\/]resourcemanagement[\\/]business[\\/]service[\\/]AbstractCrudService.java" checks="ClassTypeParameterName|VisibilityModifier"/>
+
+    <suppress
+            files="src[\\/]main[\\/]java[\\/]com[\\/]monitise[\\/]resourcemanagement[\\/]business[\\/]service[\\/]AbstractSyncService.java" checks="ClassTypeParameterName|VisibilityModifier"/>
+
+    <suppress
+            files="src[\\/]main[\\/]java[\\/]com[\\/]monitise[\\/]resourcemanagement[\\/]business[\\/]config[\\/]" checks="HideUtilityClassConstructor"/>
+    <suppress
+            files="src[\\/]main[\\/]java[\\/]com[\\/]monitise[\\/]resourcemanagement[\\/]business[\\/]service[\\/]ProgramServiceImpl.java" checks="ClassDataAbstractionCoupling"/>
+ <suppress
+            files="src[\\/]main[\\/]java[\\/]com[\\/]monitise[\\/]resourcemanagement[\\/]business[\\/]external[\\/]workfront[\\/]serviceconsumer[\\/]WFApiConstants.java" checks="MultipleStringLiterals"/>
+
+    <suppress
+            files="src[\\/]main[\\/]java[\\/]com[\\/]monitise[\\/]resourcemanagement[\\/]domain[\\/]model[\\/]User.java" checks="MethodCount"/>
+    <suppress
+            files="src[\\/]main[\\/]java[\\/]com[\\/]monitise[\\/]resourcemanagement[\\/]rest[\\/]model[\\/]ProgramData.java" checks="MethodCount"/>
+    <suppress
+            files="src[\\/]main[\\/]java[\\/]com[\\/]monitise[\\/]resourcemanagement[\\/]rest[\\/]service[\\/]AllocationRequestApiHandlerServiceImpl.java" checks="ClassDataAbstractionCoupling"/>
+    <suppress
+            files="src[\\/]main[\\/]java[\\/]com[\\/]monitise[\\/]resourcemanagement[\\/]rest[\\/]controller[\\/]secured[\\/]ProgramController.java" checks="FinalLocalVariable"/>
+
+</suppressions>
