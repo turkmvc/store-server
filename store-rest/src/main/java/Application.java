@@ -1,5 +1,3 @@
-package hello;
-
 import java.util.Arrays;
 
 import org.springframework.boot.CommandLineRunner;
