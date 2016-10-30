@@ -8,9 +8,11 @@
         <version>1.3.1.RELEASE</version>
     </parent>
 
-    <artifactId>spring-boot-sample-jpa</artifactId>
-    <name>Spring Boot JPA Sample</name>
-    <description>Spring Boot JPA Sample</description>
+    <groupId>com.budofa.store</groupId>
+    <artifactId>store-server</artifactId>
+    <version>0.0.1</version>
+    <name>store-server</name>
+    <description>store-server</description>
 
     <dependencies>
         <dependency>
