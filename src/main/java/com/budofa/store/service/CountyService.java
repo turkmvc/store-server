@@ -9,4 +9,6 @@ public interface CountyService {
     List<CountyDTO> getCounties();
 
     void save(CountyDTO countyDTO);
+
+    CountyDTO getCounty(Long countYiD);
 }

@@ -3,10 +3,7 @@ package com.budofa.store.controler.secured.county;
 import com.budofa.store.controler.model.CountyDTO;
 import com.budofa.store.service.CountyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +17,11 @@ public class CountyController {
     @RequestMapping(method = RequestMethod.GET)
     public List<CountyDTO> get() {
         return countyService.getCounties();
+    }
+
+    @RequestMapping(path = "/{countYiD}", method = RequestMethod.GET)
+    public CountyDTO get(@PathVariable Long countYiD) {
+        return countyService.getCounty(countYiD);
     }
 
     @RequestMapping(method = RequestMethod.PUT)

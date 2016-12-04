@@ -38,4 +38,9 @@ public class CountyServiceImpl implements CountyService {
 
         countyRepository.save(county);
     }
+
+    @Override
+    public CountyDTO getCounty(Long countYiD) {
+        return convert(countyRepository.findOne(countYiD));
+    }
 }
