@@ -5,11 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Role {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Role extends BaseEntity {
 
     @Column(nullable = false, unique = true)
     private String abbreviation;
@@ -20,14 +16,6 @@ public class Role {
 
     @OneToMany(mappedBy = "role")
     private List<User> userList = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
