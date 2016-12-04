@@ -1,30 +1,38 @@
 package com.budofa.store.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class User extends BaseAuditedEntity {
 
+    @NotNull
     private String firstName;
 
     private String middleName;
 
+    @NotNull
     private String lastName;
 
+    @NotNull
     private String userName;
 
     @Enumerated(EnumType.STRING)
     private MemberShipType memberShipType;
 
+    @NotNull
     private String password;
 
+    @NotNull
     private String email;
 
+    @NotNull
     private String mobileNo;
 
     @OneToOne
+    @NotNull
     private Address address;
 
     private String imageUrl;
