@@ -1,8 +1,6 @@
 package com.budofa.store.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class User {
@@ -24,20 +22,9 @@ public class User {
     @ManyToOne
     private Role role;
 
-    @ManyToMany(mappedBy = "owners")
-    private Set<Event> events = new HashSet<>();
-
     private boolean enabled;
 
     public User() {
-    }
-
-    public Set<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(Set<Event> events) {
-        this.events = events;
     }
 
     public String getImageUrl() {
