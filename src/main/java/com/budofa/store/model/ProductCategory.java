@@ -1,21 +1,34 @@
 package com.budofa.store.model;
 
-public class ProductCategory extends BaseEntity{
-  
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+public class ProductCategory extends BaseAuditedEntity {
+
+    @NotNull
 	private String name;
-	private String globalName;
-	private SuperProductCategory superProductCategory;
-	
 
-	public SuperProductCategory getSuperProductCategory() {
-		return superProductCategory;
-	}
+	private String description;
 
-	public void setSuperProductCategory(SuperProductCategory superProductCategory) {
-		this.superProductCategory = superProductCategory;
-	}
+    @OneToMany(mappedBy = "productCategory")
+    private Set<SubProductCategory> subProductCategories = new HashSet<>();
 
-	public String getName() {
+    public ProductCategory() {
+    }
+
+    public Set<SubProductCategory> getSubProductCategories() {
+        return subProductCategories;
+    }
+
+    public void setSubProductCategories(Set<SubProductCategory> subProductCategories) {
+        this.subProductCategories = subProductCategories;
+    }
+
+    public String getName() {
 		return name;
 	}
 
@@ -23,11 +36,11 @@ public class ProductCategory extends BaseEntity{
 		this.name = name;
 	}
 
-	public String getGlobalName() {
-		return globalName;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setGlobalName(String globalName) {
-		this.globalName = globalName;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

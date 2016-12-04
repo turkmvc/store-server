@@ -1,18 +1,69 @@
 package com.budofa.store.model;
 
-import java.sql.Blob;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Product extends BaseEntity{
+@Entity
+public class Product extends BaseAuditedEntity {
+
 	private String name;
-	//TODO discuss
-	private String barCode;
-	private String quarCode;
-	
-	private String ingrediant;
-	
-	private Blob productImage;
 
-	public String getName() {
+	private String barCode;
+
+	private String qrCodeUrl;
+	
+	private String ingredient;
+	
+	private String productImageUrl;
+
+	private BigDecimal price;
+
+    @OneToMany
+    private Set<StoreProduct> storeProducts = new HashSet<>();
+
+    @OneToMany(mappedBy = "product")
+    private Set<ProductRequest> productRequests = new HashSet<>();
+
+    @ManyToOne
+    private Firm firm;
+
+    public Set<StoreProduct> getStoreProducts() {
+        return storeProducts;
+    }
+
+    public void setStoreProducts(Set<StoreProduct> storeProducts) {
+        this.storeProducts = storeProducts;
+    }
+
+    public Set<ProductRequest> getProductRequests() {
+        return productRequests;
+    }
+
+    public void setProductRequests(Set<ProductRequest> productRequests) {
+        this.productRequests = productRequests;
+    }
+
+    public Firm getFirm() {
+        return firm;
+    }
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+
+	public void setFirm(Firm firm) {
+        this.firm = firm;
+    }
+
+    public String getName() {
 		return name;
 	}
 
@@ -28,28 +79,28 @@ public class Product extends BaseEntity{
 		this.barCode = barCode;
 	}
 
-	public String getQuarCode() {
-		return quarCode;
+	public String getQrCodeUrl() {
+		return qrCodeUrl;
 	}
 
-	public void setQuarCode(String quarCode) {
-		this.quarCode = quarCode;
+	public void setQrCodeUrl(String qrCodeUrl) {
+		this.qrCodeUrl = qrCodeUrl;
 	}
 
-	public String getIngrediant() {
-		return ingrediant;
+	public String getIngredient() {
+		return ingredient;
 	}
 
-	public void setIngrediant(String ingrediant) {
-		this.ingrediant = ingrediant;
+	public void setIngredient(String ingredient) {
+		this.ingredient = ingredient;
 	}
 
-	public Blob getProductImage() {
-		return productImage;
+	public String getProductImageUrl() {
+		return productImageUrl;
 	}
 
-	public void setProductImage(Blob productImage) {
-		this.productImage = productImage;
+	public void setProductImageUrl(String productImageUrl) {
+		this.productImageUrl = productImageUrl;
 	}
 	
 }

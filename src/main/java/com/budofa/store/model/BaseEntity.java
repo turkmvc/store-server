@@ -1,61 +1,41 @@
 package com.budofa.store.model;
 
-import java.util.Date;
+import javax.persistence.*;
 
-public class BaseEntity {
+@MappedSuperclass
+public abstract class BaseEntity {
 
-	private Long managedId;
-	private String generatedUid;
-	private Long createdUserId;
-	private Long lastModifiedUserId;
-	private Date createdDate;
-	private Date lastModifiedDate;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-	public Long getManagedId() {
-		return managedId;
+	@Enumerated(EnumType.STRING)
+	private Status status;
+
+	@Version
+	private int version;
+
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setManagedId(Long managedId) {
-		this.managedId = managedId;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
-	public String getGeneratedUid() {
-		return generatedUid;
+	public Long getId() {
+		return id;
 	}
 
-	public void setGeneratedUid(String generatedUid) {
-		this.generatedUid = generatedUid;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Long getCreatedUserId() {
-		return createdUserId;
+	public int getVersion() {
+		return version;
 	}
 
-	public void setCreatedUserId(Long createdUserId) {
-		this.createdUserId = createdUserId;
-	}
-
-	public Long getLastModifiedUserId() {
-		return lastModifiedUserId;
-	}
-
-	public void setLastModifiedUserId(Long lastModifiedUserId) {
-		this.lastModifiedUserId = lastModifiedUserId;
-	}
-
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public Date getLastModifiedDate() {
-		return lastModifiedDate;
-	}
-
-	public void setLastModifiedDate(Date lastModifiedDate) {
-		this.lastModifiedDate = lastModifiedDate;
+	public void setVersion(int version) {
+		this.version = version;
 	}
 }

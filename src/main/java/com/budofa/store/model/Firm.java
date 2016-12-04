@@ -1,10 +1,31 @@
 package com.budofa.store.model;
 
-public class Firm extends BaseEntity {
-	private String name;
-	private FirmType firmType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.HashSet;
+import java.util.Set;
 
-	public String getName() {
+@Entity
+public class Firm extends BaseEntity {
+
+    @OneToMany(mappedBy = "firm")
+	private Set<Product> productList = new HashSet<>();
+
+	private String name;
+
+    @ManyToOne
+    private FirmType firmType;
+
+    public Set<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(Set<Product> productList) {
+        this.productList = productList;
+    }
+
+    public String getName() {
 		return name;
 	}
 
