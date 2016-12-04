@@ -1,6 +1,9 @@
 package com.budofa.store.model;
 
-public class SuperProductCategory extends BaseEntity{
+import javax.persistence.Entity;
+
+@Entity
+public class SubProductCategory extends BaseAuditedEntity{
 	private String name;
 	private String globalName;
 
