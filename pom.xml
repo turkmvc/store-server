@@ -8,6 +8,8 @@
         <version>1.4.1.RELEASE</version>
     </parent>
 
+    <packaging>war</packaging>
+
     <groupId>com.budofa.store</groupId>
     <artifactId>store-server</artifactId>
     <version>0.0.1</version>
@@ -45,6 +47,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <start-class>com.budofa.store.Application</start-class>
     </properties>
 
     <build>
