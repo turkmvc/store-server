@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 3600) //TODO fix before production. this is for allow CORS
 @RestController
-@RequestMapping(path = "/secure/county")
+@RequestMapping(path = "/county")
 public class CountyController {
 
     @Autowired
