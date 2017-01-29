@@ -1,4 +1,4 @@
-package com.budofa.store.controler.secured.county;
+package com.budofa.store.controler.secured;
 
 import com.budofa.store.controler.model.CountyDTO;
 import com.budofa.store.service.CountyService;
@@ -9,7 +9,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600) //TODO fix before production. this is for allow CORS
 @RestController
-@RequestMapping(path = "/county")
+@RequestMapping(path = "/secure/county")
 public class CountyController {
 
     @Autowired

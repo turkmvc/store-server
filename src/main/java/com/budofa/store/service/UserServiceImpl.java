@@ -1,25 +1,12 @@
 package com.budofa.store.service;
 
-import com.budofa.store.model.User;
-import com.budofa.store.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.budofa.store.model.User;
+import com.budofa.store.repository.UserRepository;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends BaseServiceImpl<User, UserRepository>implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
 
-    @Override
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
-
-    @Override
-    public User find(long userId) {
-        return userRepository.findOne(userId);
-    }
 }

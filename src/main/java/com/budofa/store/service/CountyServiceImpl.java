@@ -1,16 +1,17 @@
 package com.budofa.store.service;
 
-import com.budofa.store.controler.model.CountyDTO;
-import com.budofa.store.model.County;
-import com.budofa.store.repository.CountyRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.budofa.store.controler.model.CountyDTO;
+import com.budofa.store.model.County;
+import com.budofa.store.repository.CountyRepository;
+
 @Service
-public class CountyServiceImpl implements CountyService {
+public class CountyServiceImpl extends BaseServiceImpl<County, CountyRepository> implements CountyService {
 
     @Autowired
     private CountyRepository countyRepository;
@@ -43,4 +44,5 @@ public class CountyServiceImpl implements CountyService {
     public CountyDTO getCounty(Long countYiD) {
         return convert(countyRepository.findOne(countYiD));
     }
+
 }
