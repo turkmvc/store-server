@@ -1,8 +1,11 @@
 package com.budofa.store.model;
 
+import com.budofa.store.listener.EntityListener;
+
 import javax.persistence.*;
 
 @MappedSuperclass
+@EntityListeners(EntityListener.class)
 public abstract class BaseEntity {
 
 	@Id

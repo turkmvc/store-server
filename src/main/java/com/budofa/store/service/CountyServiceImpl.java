@@ -3,6 +3,7 @@ package com.budofa.store.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.budofa.store.model.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,7 @@ public class CountyServiceImpl extends BaseServiceImpl<County, CountyRepository>
     @Override
     public void save(CountyDTO countyDTO) {
         County county = new County();
+        county.setStatus(Status.ACTIVE);
         county.setName(countyDTO.getName());
 
         countyRepository.save(county);

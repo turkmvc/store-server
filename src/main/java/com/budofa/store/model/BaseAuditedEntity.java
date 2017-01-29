@@ -1,10 +1,12 @@
 package com.budofa.store.model;
 
+import com.budofa.store.listener.EntityAuditListener;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
-//@EntityListeners(EntityAuditListener.class)
+@EntityListeners(EntityAuditListener.class)
 public abstract class BaseAuditedEntity extends BaseEntity {
 
     /**
