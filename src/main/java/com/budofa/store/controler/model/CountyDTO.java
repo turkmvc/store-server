@@ -1,9 +1,12 @@
 package com.budofa.store.controler.model;
 
+import javax.validation.constraints.NotNull;
+
 public class CountyDTO {
 
     private Long id;
 
+    @NotNull(message = "{county.name.notnull}")
     private String name;
 
     public Long getId() {

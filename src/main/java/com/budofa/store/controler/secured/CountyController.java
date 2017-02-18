@@ -5,6 +5,7 @@ import com.budofa.store.service.CountyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600) //TODO fix before production. this is for allow CORS
@@ -26,7 +27,7 @@ public class CountyController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public void save(@RequestBody CountyDTO countyDTO) {
+    public void save(@Valid @RequestBody CountyDTO countyDTO) {
         countyService.save(countyDTO);
     }
 
