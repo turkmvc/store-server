@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsUtils;
 
 import javax.sql.DataSource;
 
@@ -39,8 +40,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .authorizeRequests().antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT).hasRole("ADMIN")
+                .authorizeRequests()
+                .requestMatchers(CorsUtils::isPreFlightRequest).permitAll() //TODO remove for production
+//                .antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
+//                .antMatchers(HttpMethod.PUT).hasRole("ADMIN")
                 .antMatchers("/login").permitAll()
                 .antMatchers("/secure/**").authenticated()
                 .and().logout().permitAll().logoutUrl("/logout").deleteCookies("JSESSIONID")

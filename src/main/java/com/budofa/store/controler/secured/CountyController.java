@@ -3,6 +3,7 @@ package com.budofa.store.controler.secured;
 import com.budofa.store.controler.model.CountyDTO;
 import com.budofa.store.service.CountyService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,7 +27,9 @@ public class CountyController {
         return countyService.getCounty(countYiD);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT,
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public void save(@Valid @RequestBody CountyDTO countyDTO) {
         countyService.save(countyDTO);
     }
