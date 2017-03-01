@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.budofa.store.model.Status;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,13 +26,9 @@ public class CountyServiceImpl extends BaseServiceImpl<County, CountyRepository>
                 .collect(Collectors.toList());
     }
 
-    //TODO use ModelMapper
     private CountyDTO convert(County county) {
-        CountyDTO countyDTO = new CountyDTO();
-        countyDTO.setName(county.getName());
-        countyDTO.setId(county.getId());
-
-        return countyDTO;
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper.map(county, CountyDTO.class);
     }
     @Override
     public void save(CountyDTO countyDTO) {
