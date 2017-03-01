@@ -1,9 +1,5 @@
 package com.budofa.store.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import com.budofa.store.model.Status;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,19 +13,6 @@ public class CountyServiceImpl extends BaseServiceImpl<County, CountyDTO, County
 
     @Autowired
     private CountyRepository countyRepository;
-
-    @Override
-    public List<CountyDTO> getCounties() {
-        List<County> countyList = countyRepository.findAll();
-        return  countyList.stream()
-                .map(this::convert)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public void save(CountyDTO countyDTO) {
-        countyRepository.save(convert(countyDTO));
-    }
 
     @Override
     public void update(CountyDTO countyDTO) {

@@ -1,9 +1,9 @@
 package com.budofa.store.service;
 
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import com.budofa.store.controler.model.BaseDTO;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.data.domain.Sort;
 import com.budofa.store.model.BaseEntity;
 import com.budofa.store.repository.BaseRepository;
 
-public abstract class BaseServiceImpl<T extends BaseEntity, S extends BaseDTO, R extends BaseRepository<T>>
+public abstract class BaseServiceImpl<T extends BaseEntity, S, R extends BaseRepository<T>>
         implements BaseService<T, S> {
 
     @Autowired
@@ -21,7 +21,6 @@ public abstract class BaseServiceImpl<T extends BaseEntity, S extends BaseDTO, R
     public List<S> findAll() {
         ModelMapper modelMapper = new ModelMapper();
         Type targetListType = new TypeToken<List<S>>() {}.getType();
-
         return modelMapper.map(repository.findAll(), targetListType);
     }
 
@@ -35,12 +34,13 @@ public abstract class BaseServiceImpl<T extends BaseEntity, S extends BaseDTO, R
     @Override
     public S find(Long id) {
         ModelMapper modelMapper = new ModelMapper();
-        Type targetListType = new TypeToken<List<S>>() {}.getType();
-
-        return modelMapper.map(repository.findOne(id), targetListType);
+        return modelMapper.map(repository.findOne(id), findClassForS());
     }
+
     @Override
-    public T persist(T entity) {
+    public T persist(S dto) {
+        ModelMapper modelMapper = new ModelMapper();
+        T entity = modelMapper.map(dto, findClassForT());
         return repository.save(entity);
     }
     @Override
@@ -66,6 +66,18 @@ public abstract class BaseServiceImpl<T extends BaseEntity, S extends BaseDTO, R
     @Override
     public long count() {
         return repository.count();
+    }
+
+    private Class<T> findClassForT() {
+        return (Class<T>)
+                ((ParameterizedType)getClass().getGenericSuperclass())
+                        .getActualTypeArguments()[0];
+    }
+
+    private Class<S> findClassForS() {
+        return (Class<S>)
+                ((ParameterizedType)getClass().getGenericSuperclass())
+                        .getActualTypeArguments()[0];
     }
 
 }

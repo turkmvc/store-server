@@ -20,7 +20,7 @@ public class CountyController implements BaseSecuredController<CountyDTO> {
 
     @Override
     public List<CountyDTO> get() {
-        return countyService.getCounties();
+        return countyService.findAll();
     }
 
     @Override
@@ -30,7 +30,7 @@ public class CountyController implements BaseSecuredController<CountyDTO> {
 
     @Override
     public void save(@Valid @RequestBody CountyDTO countyDTO) {
-        countyService.save(countyDTO);
+        countyService.persist(countyDTO);
     }
 
     @Override

@@ -1,15 +1,11 @@
 package com.budofa.store.service;
 
 import java.util.List;
-
-import com.budofa.store.controler.model.BaseDTO;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import com.budofa.store.model.BaseEntity;
 
-public interface BaseService<T extends BaseEntity, S extends BaseDTO> {
+public interface BaseService<T extends BaseEntity, S> {
 
     List<S> findAll();
 
@@ -17,7 +13,7 @@ public interface BaseService<T extends BaseEntity, S extends BaseDTO> {
 
     S find(Long id);
 
-    T persist(T entity);
+    T persist(S dto);
 
     List<T> persist(Iterable<T> iterable);
 
