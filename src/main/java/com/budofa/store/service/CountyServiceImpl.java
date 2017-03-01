@@ -26,17 +26,21 @@ public class CountyServiceImpl extends BaseServiceImpl<County, CountyRepository>
                 .collect(Collectors.toList());
     }
 
-    private CountyDTO convert(County county) {
-        ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(county, CountyDTO.class);
-    }
     @Override
     public void save(CountyDTO countyDTO) {
-        County county = new County();
-        county.setStatus(Status.ACTIVE);
-        county.setName(countyDTO.getName());
+        countyRepository.save(convert(countyDTO));
+    }
 
+    @Override
+    public void update(CountyDTO countyDTO) {
+        County county = countyRepository.findOne(countyDTO.getId());
+        county.setName(countyDTO.getName());
         countyRepository.save(county);
+    }
+
+    @Override
+    public void delete(CountyDTO countyDTO) {
+        countyRepository.delete(countyRepository.findOne(countyDTO.getId()));
     }
 
     @Override
@@ -44,4 +48,13 @@ public class CountyServiceImpl extends BaseServiceImpl<County, CountyRepository>
         return convert(countyRepository.findOne(countYiD));
     }
 
+    private CountyDTO convert(County county) {
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper.map(county, CountyDTO.class);
+    }
+
+    private County convert(CountyDTO countyDTO) {
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper.map(countyDTO, County.class);
+    }
 }

@@ -34,4 +34,18 @@ public class CountyController {
         countyService.save(countyDTO);
     }
 
+    @RequestMapping(method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public void update(@Valid @RequestBody CountyDTO countyDTO) {
+        countyService.update(countyDTO);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE,
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public void delete(@Valid @RequestBody CountyDTO countyDTO) {
+        countyService.delete(countyDTO);
+    }
+
 }

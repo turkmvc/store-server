@@ -11,5 +11,9 @@ public interface CountyService extends BaseService<County>{
 
     void save(CountyDTO countyDTO);
 
+    void update(CountyDTO countyDTO);
+
+    void delete(CountyDTO countyDTO);
+
     CountyDTO getCounty(Long countYiD);
 }

@@ -3,5 +3,5 @@ package com.budofa.store.repository;
 import com.budofa.store.model.County;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CountyRepository extends BaseRepository<County>{
+public interface CountyRepository extends BaseRepository<County> {
 }
