@@ -2,19 +2,20 @@ package com.budofa.store.service;
 
 import java.util.List;
 
+import com.budofa.store.controler.model.BaseDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import com.budofa.store.model.BaseEntity;
 
-public interface BaseService<T extends BaseEntity> {
+public interface BaseService<T extends BaseEntity, S extends BaseDTO> {
 
-    List<T> findAll();
+    List<S> findAll();
 
-    List<T> findAll(Sort sort);
+    List<S> findAll(Sort sort);
 
-    T find(Long id);
+    S find(Long id);
 
     T persist(T entity);
 

@@ -1,7 +1,8 @@
 package com.budofa.store.service;
 
+import com.budofa.store.controler.model.BaseDTO;
 import com.budofa.store.model.Basket;
 
-public interface BasketService extends BaseService<Basket>{
+public interface BasketService extends BaseService<Basket, BaseDTO>{
 
 }

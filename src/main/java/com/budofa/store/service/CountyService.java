@@ -5,7 +5,7 @@ import java.util.List;
 import com.budofa.store.controler.model.CountyDTO;
 import com.budofa.store.model.County;
 
-public interface CountyService extends BaseService<County>{
+public interface CountyService extends BaseService<County, CountyDTO>{
 
     List<CountyDTO> getCounties();
 

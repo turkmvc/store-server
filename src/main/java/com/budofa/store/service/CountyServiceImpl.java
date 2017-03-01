@@ -13,7 +13,7 @@ import com.budofa.store.model.County;
 import com.budofa.store.repository.CountyRepository;
 
 @Service
-public class CountyServiceImpl extends BaseServiceImpl<County, CountyRepository> implements CountyService {
+public class CountyServiceImpl extends BaseServiceImpl<County, CountyDTO, CountyRepository> implements CountyService {
 
     @Autowired
     private CountyRepository countyRepository;

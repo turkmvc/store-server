@@ -1,32 +1,43 @@
 package com.budofa.store.service;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
+import com.budofa.store.controler.model.BaseDTO;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 
 import com.budofa.store.model.BaseEntity;
-import com.budofa.store.model.County;
 import com.budofa.store.repository.BaseRepository;
 
-public abstract class BaseServiceImpl<T extends BaseEntity, R extends BaseRepository<T>> implements BaseService<T> {
+public abstract class BaseServiceImpl<T extends BaseEntity, S extends BaseDTO, R extends BaseRepository<T>>
+        implements BaseService<T, S> {
 
     @Autowired
     protected R repository;
     @Override
-    public List<T> findAll() {
-        return repository.findAll();
-    }
+    public List<S> findAll() {
+        ModelMapper modelMapper = new ModelMapper();
+        Type targetListType = new TypeToken<List<S>>() {}.getType();
 
-
-    @Override
-    public List<T> findAll(Sort sort) {
-        return repository.findAll(sort);
+        return modelMapper.map(repository.findAll(), targetListType);
     }
 
     @Override
-    public T find(Long id) {
-        return repository.findOne(id);
+    public List<S> findAll(Sort sort) {
+        ModelMapper modelMapper = new ModelMapper();
+        Type targetListType = new TypeToken<List<S>>() {}.getType();
+        return modelMapper.map(repository.findAll(sort), targetListType);
+    }
+
+    @Override
+    public S find(Long id) {
+        ModelMapper modelMapper = new ModelMapper();
+        Type targetListType = new TypeToken<List<S>>() {}.getType();
+
+        return modelMapper.map(repository.findOne(id), targetListType);
     }
     @Override
     public T persist(T entity) {
