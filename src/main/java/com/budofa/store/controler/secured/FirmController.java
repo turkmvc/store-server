@@ -1,7 +1,10 @@
 package com.budofa.store.controler.secured;
 
 import com.budofa.store.controler.model.FirmDTO;
+import com.budofa.store.model.County;
+import com.budofa.store.model.Firm;
 import com.budofa.store.service.FirmService;
+import com.budofa.store.service.FirmTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +19,9 @@ public class FirmController implements BaseSecuredController<FirmDTO> {
     @Autowired
     private FirmService firmService;
 
+    @Autowired
+    private FirmTypeService firmTypeService;
+
     @Override
     public List<FirmDTO> get() {
         return firmService.findAll();
@@ -28,16 +34,23 @@ public class FirmController implements BaseSecuredController<FirmDTO> {
 
     @Override
     public void save(@RequestBody FirmDTO firmDTO) {
-
+        firmService.persist(firmDTO);
     }
 
     @Override
     public void update(@Valid @RequestBody FirmDTO firmDTO) {
 
+        //TODO try to implement update function in base service
+        Firm firm = firmService.findOne(firmDTO.getId());
+
+        firm.setName(firmDTO.getName());
+        firm.setFirmType(firmTypeService.findOne(firmDTO.getFirmType().getId()));
+
+        firmService.persist(firm);
     }
 
     @Override
     public void delete(@RequestBody FirmDTO firmDTO) {
-
+        firmService.delete(firmDTO.getId());
     }
 }

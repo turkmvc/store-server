@@ -9,7 +9,7 @@ import java.util.Set;
 public class FirmType extends BaseEntity {
 	private String name;
 
-	@OneToMany
+	@OneToMany(mappedBy = "firmType")
 	private Set<Firm> firms = new HashSet<>();
 
 	public Set<Firm> getFirms() {
