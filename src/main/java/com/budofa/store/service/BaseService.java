@@ -13,7 +13,11 @@ public interface BaseService<T extends BaseEntity, S> {
 
     S find(Long id);
 
+    T findOne(Long id);
+
     T persist(S dto);
+
+    T persist(T entity);
 
     List<T> persist(Iterable<T> iterable);
 

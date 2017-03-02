@@ -24,8 +24,8 @@ public class CountyController implements BaseSecuredController<CountyDTO> {
     }
 
     @Override
-    public CountyDTO get(@PathVariable Long countYiD) {
-        return countyService.getCounty(countYiD);
+    public CountyDTO get(@PathVariable Long id) {
+        return countyService.find(id);
     }
 
     @Override
@@ -35,12 +35,18 @@ public class CountyController implements BaseSecuredController<CountyDTO> {
 
     @Override
     public void update(@Valid @RequestBody CountyDTO countyDTO) {
-        countyService.update(countyDTO);
+
+        //TODO try to implement update function in base service
+        County county = countyService.findOne(countyDTO.getId());
+
+        county.setName(countyDTO.getName());
+
+        countyService.persist(county);
     }
 
     @Override
     public void delete(@Valid @RequestBody CountyDTO countyDTO) {
-        countyService.delete(countyDTO);
+        countyService.delete(countyDTO.getId());
     }
 
 }

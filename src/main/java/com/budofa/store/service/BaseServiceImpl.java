@@ -4,6 +4,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import com.budofa.store.service.map.BaseMap;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,19 @@ public abstract class BaseServiceImpl<T extends BaseEntity, S, R extends BaseRep
     }
 
     @Override
+    public T findOne(Long id) {
+        return repository.findOne(id);
+    }
+
+    @Override
     public T persist(S dto) {
         ModelMapper modelMapper = new ModelMapper();
         T entity = modelMapper.map(dto, findClassForT());
+        return repository.save(entity);
+    }
+
+    @Override
+    public T persist(T entity) {
         return repository.save(entity);
     }
     @Override
