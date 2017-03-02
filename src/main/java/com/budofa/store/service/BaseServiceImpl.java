@@ -4,7 +4,6 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import com.budofa.store.service.map.BaseMap;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +17,10 @@ public abstract class BaseServiceImpl<T extends BaseEntity, S, R extends BaseRep
 
     @Autowired
     protected R repository;
+
     @Override
-    public List<S> findAll() {
-        ModelMapper modelMapper = new ModelMapper();
-        Type targetListType = new TypeToken<List<S>>() {}.getType();
-        return modelMapper.map(repository.findAll(), targetListType);
+    public List<T> findAll() {
+        return repository.findAll();
     }
 
     @Override

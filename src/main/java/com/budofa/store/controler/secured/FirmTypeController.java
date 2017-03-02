@@ -1,13 +1,15 @@
 package com.budofa.store.controler.secured;
 
 import com.budofa.store.controler.model.FirmTypeDTO;
-import com.budofa.store.model.County;
 import com.budofa.store.model.FirmType;
 import com.budofa.store.service.FirmTypeService;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.Type;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600) //TODO fix before production. this is for allow CORS
@@ -20,7 +22,9 @@ public class FirmTypeController implements BaseSecuredController<FirmTypeDTO> {
 
     @Override
     public List<FirmTypeDTO> get() {
-        return firmTypeService.findAll();
+        ModelMapper modelMapper = new ModelMapper();
+        Type targetListType = new TypeToken<List<FirmTypeDTO>>() {}.getType();
+        return modelMapper.map(firmTypeService.findAll(), targetListType);
     }
 
     @Override

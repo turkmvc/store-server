@@ -7,7 +7,7 @@ import com.budofa.store.model.BaseEntity;
 
 public interface BaseService<T extends BaseEntity, S> {
 
-    List<S> findAll();
+    List<T> findAll();
 
     List<S> findAll(Sort sort);
 

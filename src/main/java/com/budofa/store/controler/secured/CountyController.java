@@ -3,11 +3,13 @@ package com.budofa.store.controler.secured;
 import com.budofa.store.controler.model.CountyDTO;
 import com.budofa.store.model.County;
 import com.budofa.store.service.CountyService;
+import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.Type;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600) //TODO fix before production. this is for allow CORS
@@ -20,7 +22,9 @@ public class CountyController implements BaseSecuredController<CountyDTO> {
 
     @Override
     public List<CountyDTO> get() {
-        return countyService.findAll();
+        ModelMapper modelMapper = new ModelMapper();
+        Type targetListType = new TypeToken<List<CountyDTO>>() {}.getType();
+        return modelMapper.map(countyService.findAll(), targetListType);
     }
 
     @Override
