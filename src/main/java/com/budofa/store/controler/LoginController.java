@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600) //TODOss before production. this is for allow CORS
 @RestController
-public class LoginController {s
+public class LoginController {
 
     @Autowired
     private UserRepository userRepository;
