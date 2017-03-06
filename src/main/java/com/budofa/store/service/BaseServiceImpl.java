@@ -86,7 +86,7 @@ public abstract class BaseServiceImpl<T extends BaseEntity, S, R extends BaseRep
     private Class<S> findClassForS() {
         return (Class<S>)
                 ((ParameterizedType)getClass().getGenericSuperclass())
-                        .getActualTypeArguments()[0];
+                        .getActualTypeArguments()[1];
     }
 
 }

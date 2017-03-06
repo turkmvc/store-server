@@ -1,9 +1,12 @@
 package com.budofa.store.service;
 
-import com.budofa.store.controler.model.BaseDTO;
+import org.springframework.stereotype.Service;
+
+import com.budofa.store.controler.model.StoreDTO;
 import com.budofa.store.model.Store;
 import com.budofa.store.repository.StoreRepository;
 
-public class StoreServiceImpl extends BaseServiceImpl<Store , BaseDTO, StoreRepository> implements StoreService{
+@Service
+public class StoreServiceImpl extends BaseServiceImpl<Store, StoreDTO, StoreRepository> implements StoreService {
 
 }
