@@ -1,10 +1,8 @@
 package com.budofa.store.model;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class ProductCategory extends BaseAuditedEntity {
@@ -14,21 +12,21 @@ public class ProductCategory extends BaseAuditedEntity {
 
 	private String description;
 
-    @OneToMany(mappedBy = "productCategory")
-    private Set<SubProductCategory> subProductCategories = new HashSet<>();
+    @OneToOne
+    private ProductCategory parentCategory;
 
     public ProductCategory() {
     }
 
-    public Set<SubProductCategory> getSubProductCategories() {
-        return subProductCategories;
-    }
+	public ProductCategory getParentCategory() {
+		return parentCategory;
+	}
 
-    public void setSubProductCategories(Set<SubProductCategory> subProductCategories) {
-        this.subProductCategories = subProductCategories;
-    }
+	public void setParentCategory(ProductCategory parentCategory) {
+		this.parentCategory = parentCategory;
+	}
 
-    public String getName() {
+	public String getName() {
 		return name;
 	}
 

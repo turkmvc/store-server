@@ -46,6 +46,10 @@ public class ProductCategoryController implements BaseSecuredController<ProductC
         productCategory.setName(productCategoryDTO.getName());
         productCategory.setDescription(productCategoryDTO.getDescription());
 
+        ProductCategory parent = new ProductCategory();
+        parent.setId(productCategoryDTO.getParentCategory().getId());
+        productCategory.setParentCategory(parent);
+
         productCategoryService.persist(productCategory);
     }
 

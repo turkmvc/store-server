@@ -4,20 +4,20 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class SubProductCategoryItem extends BaseAuditedEntity {
+public class ProductCategoryItem extends BaseAuditedEntity {
 
     @ManyToOne
-    private SubProductCategory subProductCategory;
+    private ProductCategory productCategory;
 
     @ManyToOne
     private Product product;
 
-    public SubProductCategory getSubProductCategory() {
-        return subProductCategory;
+    public ProductCategory getProductCategory() {
+        return productCategory;
     }
 
-    public void setSubProductCategory(SubProductCategory subProductCategory) {
-        this.subProductCategory = subProductCategory;
+    public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
     }
 
     public Product getProduct() {

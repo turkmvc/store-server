@@ -6,6 +6,16 @@ public class ProductCategoryDTO extends BaseDTO {
 
     private String description;
 
+    private ProductCategoryDTO parentCategory;
+
+    public ProductCategoryDTO getParentCategory() {
+        return parentCategory;
+    }
+
+    public void setParentCategory(ProductCategoryDTO parentCategory) {
+        this.parentCategory = parentCategory;
+    }
+
     public String getName() {
         return name;
     }
