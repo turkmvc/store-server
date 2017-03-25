@@ -1,6 +1,8 @@
 package com.budofa.store.service;
 
 import java.util.List;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Sort;
 
 import com.budofa.store.model.BaseEntity;
@@ -18,6 +20,10 @@ public interface BaseService<T extends BaseEntity, S> {
     T persist(S dto);
 
     T persist(T entity);
+    
+    T update(Long id, S dto);
+    
+    T updateAndFlush(Long id, S dto);
 
     List<T> persist(Iterable<T> iterable);
 
@@ -30,4 +36,6 @@ public interface BaseService<T extends BaseEntity, S> {
     void delete(Iterable<? extends T> entities);
 
     long count();
+    
+    ModelMapper getMapper();
 }
