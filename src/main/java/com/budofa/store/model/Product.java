@@ -10,17 +10,17 @@ import java.util.Set;
 @Entity
 public class Product extends BaseAuditedEntity {
 
-	private String name;
+    private String name;
 
-	private String barCode;
+    private String barCode;
 
-	private String qrCodeUrl;
-	
-	private String ingredient;
-	
-	private String productImageUrl;
+    private String qrCodeUrl;
 
-	private BigDecimal price;
+    private String ingredient;
+
+    private String productImageUrl;
+
+    private BigDecimal price;
 
     @OneToMany
     private Set<StoreProduct> storeProducts = new HashSet<>();
@@ -32,75 +32,75 @@ public class Product extends BaseAuditedEntity {
     private Firm firm;
 
     public Set<StoreProduct> getStoreProducts() {
-        return storeProducts;
+	return storeProducts;
     }
 
     public void setStoreProducts(Set<StoreProduct> storeProducts) {
-        this.storeProducts = storeProducts;
+	this.storeProducts = storeProducts;
     }
 
     public Set<ProductRequest> getProductRequests() {
-        return productRequests;
+	return productRequests;
     }
 
     public void setProductRequests(Set<ProductRequest> productRequests) {
-        this.productRequests = productRequests;
+	this.productRequests = productRequests;
     }
 
     public Firm getFirm() {
-        return firm;
+	return firm;
     }
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+    public BigDecimal getPrice() {
+	return price;
+    }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    public void setPrice(BigDecimal price) {
+	this.price = price;
+    }
 
-	public void setFirm(Firm firm) {
-        this.firm = firm;
+    public void setFirm(Firm firm) {
+	this.firm = firm;
     }
 
     public String getName() {
-		return name;
-	}
+	return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+	this.name = name;
+    }
 
-	public String getBarCode() {
-		return barCode;
-	}
+    public String getBarCode() {
+	return barCode;
+    }
 
-	public void setBarCode(String barCode) {
-		this.barCode = barCode;
-	}
+    public void setBarCode(String barCode) {
+	this.barCode = barCode;
+    }
 
-	public String getQrCodeUrl() {
-		return qrCodeUrl;
-	}
+    public String getQrCodeUrl() {
+	return qrCodeUrl;
+    }
 
-	public void setQrCodeUrl(String qrCodeUrl) {
-		this.qrCodeUrl = qrCodeUrl;
-	}
+    public void setQrCodeUrl(String qrCodeUrl) {
+	this.qrCodeUrl = qrCodeUrl;
+    }
 
-	public String getIngredient() {
-		return ingredient;
-	}
+    public String getIngredient() {
+	return ingredient;
+    }
 
-	public void setIngredient(String ingredient) {
-		this.ingredient = ingredient;
-	}
+    public void setIngredient(String ingredient) {
+	this.ingredient = ingredient;
+    }
 
-	public String getProductImageUrl() {
-		return productImageUrl;
-	}
+    public String getProductImageUrl() {
+	return productImageUrl;
+    }
 
-	public void setProductImageUrl(String productImageUrl) {
-		this.productImageUrl = productImageUrl;
-	}
-	
+    public void setProductImageUrl(String productImageUrl) {
+	this.productImageUrl = productImageUrl;
+    }
+
 }
